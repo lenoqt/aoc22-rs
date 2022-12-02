@@ -43,7 +43,7 @@ pub fn solution(input_path: &str) -> i32 {
 
 #[test]
 fn test_solution() {
-    let input_path = "./input_files/input_example1.txt";
+    let input_path = "./input_files/day1/input_example1.txt";
     let max_calories = solution(input_path);
     assert_eq!(max_calories, 24000);
 }
