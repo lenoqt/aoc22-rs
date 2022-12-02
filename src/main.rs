@@ -1,7 +1,10 @@
-use aoc22_rs::solutions::*;
+use aoc22_rs::solutions::{day1, day2};
 
 fn main() {
 
-    let day1_solution = solution("./input_files/input_day1.txt");
+    let day1_solution = day1::solution("./input_files/day1/input_day1.txt");
     println!("Max: {}", day1_solution);
+
+    let day2_solution = day2::solution1("./input_files/day2/input_day2.txt");
+    println!("Score: {}", day2_solution);
 }

@@ -1,6 +1,4 @@
-use std::fs::File;
-use std::path::Path;
-use std::io::{self, BufRead};
+use crate::solutions::utils::read_lines;
 
 #[derive(Debug, Clone)]
 pub struct Elf
@@ -20,12 +18,6 @@ impl Elf {
 
 }
 
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-    where P: AsRef<Path> {
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
-}
-
 pub fn solution(input_path: &str) -> i32 {
     let elf = &mut Elf::new();
     let max_calories=&mut 0;
@@ -42,6 +34,8 @@ pub fn solution(input_path: &str) -> i32 {
                 continue;
             }
         }
+    } else {
+        panic!("Can't find file")
     }
     *max_calories
 }
