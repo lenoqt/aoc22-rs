@@ -50,7 +50,7 @@ pub fn solution1(input_path: &str) -> i32 {
             let  (play_a, play_b) = line
                 .as_deref()
                 .expect("Can't read line")
-                .split_once(" ")
+                .split_once(' ')
                 .unwrap();
             let score = compute_score(
                      play_a
@@ -76,7 +76,7 @@ pub fn solution2(input_path: &str) -> i32 {
             let  (play_a, result) = line
                 .as_deref()
                 .expect("Can't read line")
-                .split_once(" ")
+                .split_once(' ')
                 .unwrap();
             let play_b = draw_strategy(
                 play_a

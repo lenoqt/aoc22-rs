@@ -1,7 +1,7 @@
 use crate::solutions::utils::read_lines;
 
-const ALPHABET1: &'static str = "abcdefghijklmnopqrstuvwxyz";
-const ALPHABET2: &'static str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const ALPHABET1: &str = "abcdefghijklmnopqrstuvwxyz";
+const ALPHABET2: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 #[derive(Debug, Default)]
 struct Elf {
@@ -11,7 +11,7 @@ struct Elf {
 
 impl Elf {
     fn is_bag_filled(&self) -> bool {
-        self.items.len() > 0
+        !self.items.is_empty()
     }
 }
 
@@ -31,8 +31,8 @@ impl Elves {
 
     fn set_badge(&mut self) {
         for a in self.members[0].items.iter() {
-            if self.members[1].items.contains(&a)
-                && self.members[2].items.contains(&a)
+            if self.members[1].items.contains(a)
+                && self.members[2].items.contains(a)
             {
                 self.badge = Some(*a);
             }
@@ -70,7 +70,7 @@ pub fn solution1(input_path: &str) -> i32 {
             right.sort();
             let mut repeated = None;
             for a in left.iter() {
-                if right.contains(&a) {
+                if right.contains(a) {
                     repeated = Some(a);
                 }
             }

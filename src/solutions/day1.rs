@@ -1,6 +1,6 @@
 use crate::solutions::utils::read_lines;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct Elf
 {
     pub elf_id: i32,
@@ -8,16 +8,13 @@ pub struct Elf
 }
 
 impl Elf {
-    pub fn new() -> Self {
-        Elf { elf_id: 0, calories: 0 }
-    }
     pub fn set_zero_calories(&mut self) {
         self.calories = 0;
     }
 }
 
 pub fn solution(input_path: &str) -> i32 {
-    let elf = &mut Elf::new();
+    let elf = &mut Elf::default();
     let max_calories = &mut 0;
     if let Ok(lines) = read_lines(input_path) {
         for line in lines {
@@ -27,7 +24,7 @@ pub fn solution(input_path: &str) -> i32 {
                 if elf.calories > *max_calories {
                     *max_calories = elf.calories;
                 }
-                elf.elf_id = elf.elf_id + 1;
+                elf.elf_id += 1;
                 elf.set_zero_calories();
                 continue;
             }
