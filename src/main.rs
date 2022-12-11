@@ -18,4 +18,7 @@ fn main() {
 
     let day4_solution1 = day4::solution1("./input_files/day4/input_day4_1.txt");
     println!("Solution day 4-1: {}", day4_solution1);
+
+    let day4_solution2 = day4::solution2("./input_files/day4/input_day4_1.txt");
+    println!("Solution day 4-2: {}", day4_solution2);
 }
