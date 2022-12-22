@@ -1,4 +1,4 @@
-use aoc22_rs::solutions::{day1, day2, day3, day4};
+use aoc22_rs::solutions::{day1, day2, day3, day4, day5};
 
 fn main() {
     let day1_solution = day1::solution("./input_files/day1/input_day1.txt");
@@ -21,4 +21,7 @@ fn main() {
 
     let day4_solution2 = day4::solution2("./input_files/day4/input_day4_1.txt");
     println!("Solution day 4-2: {}", day4_solution2);
+
+    let day5_solution1 = day5::solution1("./input_files/day5/input_day5_1.txt");
+    println!("Solution day 5-1: {:?}", day5_solution1);
 }
