@@ -54,8 +54,9 @@ impl Elves {
         );
         let filtered = filtered_vector.as_slice();
 
-        if filtered == self.elf_pair[0].assigned_section ||
-           filtered == self.elf_pair[1].assigned_section {
+        if filtered == self.elf_pair[0].assigned_section
+            || filtered == self.elf_pair[1].assigned_section
+        {
             self.full_overlapped = true;
             return;
         }
@@ -63,8 +64,7 @@ impl Elves {
     }
 
     fn is_partially_overlapped(&mut self) {
-        if self.elf_pair[0].assigned_section.len() !=
-           self.elf_pair[1].assigned_section.len() {
+        if self.elf_pair[0].assigned_section.len() != self.elf_pair[1].assigned_section.len() {
             panic!("Mismatched containers size for elves");
         }
         if self.elf_pair[0].assigned_section == self.elf_pair[1].assigned_section {
@@ -73,8 +73,9 @@ impl Elves {
             return;
         }
         let filtered_vector = filter_array(
-                &self.elf_pair[0].assigned_section,
-                &self.elf_pair[1].assigned_section);
+            &self.elf_pair[0].assigned_section,
+            &self.elf_pair[1].assigned_section,
+        );
         let filtered = filtered_vector.as_slice();
         if filtered.iter().any(|x| *x) {
             self.partially_overlapped = true;
@@ -83,7 +84,6 @@ impl Elves {
         self.full_overlapped = false;
         self.partially_overlapped = false;
     }
-
 }
 
 fn filter_array<'a>(a: &'a [bool], b: &'a [bool]) -> Vec<bool> {
@@ -101,16 +101,20 @@ fn filter_array<'a>(a: &'a [bool], b: &'a [bool]) -> Vec<bool> {
 }
 
 #[allow(dead_code)]
-fn graph_containers(a: &[bool], b: &[bool] ) {
+fn graph_containers(a: &[bool], b: &[bool]) {
     for x in a.iter() {
         let mut c = ".";
-        if *x { c = "i"; }
+        if *x {
+            c = "i";
+        }
         print!("{}", c);
     }
     println!();
     for y in b.iter() {
         let mut c = ".";
-        if *y { c = "i"; }
+        if *y {
+            c = "i";
+        }
         print!("{}", c);
     }
     println!();
@@ -165,10 +169,6 @@ pub fn solution2(input_path: &str) -> i32 {
     }
     total
 }
-
-
-
-
 
 #[test]
 fn test_solution1() {
@@ -264,20 +264,19 @@ fn test_partial_overlapping() {
     assert!(elf.partially_overlapped);
 }
 
-
 #[test]
-fn test_convolve() {
+fn test_filter() {
     let a = [false, true, true, true, true, true, true, true, false];
     let b = [false, false, true, true, true, true, true, false, false];
-    let result_conv = filter_array(&a, &b);
-    let convoluted = result_conv.as_slice();
-    assert_eq!(&b, convoluted);
+    let result_filter = filter_array(&a, &b);
+    let filtered = result_filter.as_slice();
+    assert_eq!(&b, filtered);
 
     let a = [false, true, true, true, false, true, true, true, false];
     let b = [false, false, true, true, true, true, true, false, false];
-    let convol_vec = filter_array(&a, &b);
-    let convoluted = convol_vec.as_slice();
+    let filter_vec = filter_array(&a, &b);
+    let filtered_ne = filter_vec.as_slice();
 
-    assert_ne!(&a, convoluted);
-    assert_ne!(&b, convoluted);
+    assert_ne!(&a, filtered_ne);
+    assert_ne!(&b, filtered_ne);
 }
